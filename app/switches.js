@@ -1,5 +1,5 @@
 // 1. Given a string with the value of a day of the week, return the number that that day is in the week. A second argument will be provided to determine if should start week on Monday if true, else Sunday if false. If the string is not a day of the week but is bad input, then return the string 'That's not a day of the week'.
-// Example: 
+// Example:
     // input: 'Sunday', false
     // output: 1
 //Example:
@@ -7,7 +7,50 @@
     // output: 7
 
 function daysPosition(day, offset) {
-
+    switch (day.toLowerCase()){
+        case 'sunday':
+            if(offset){
+                return 7;
+            }
+            return 1;
+            break;
+        case 'monday':
+            if(offset){
+                return 1;
+            }
+            return 2;
+            break;
+        case 'tuesday':
+            if(offset){
+                return 2;
+            }
+            return 3;
+            break;
+        case 'wednesday':
+            if(offset){
+                return 3;
+            }
+            return 4;
+            break;
+        case 'thursday':
+            if(offset){
+                return 4;
+            }
+            return 5;
+            break;
+        case 'friday':
+            if(offset){
+                return 5;
+            }
+            return 6;
+            break;
+        default:
+            if(offset){
+                return 6;
+            }
+            return 7;
+            break;
+    }
 }
 
 
@@ -27,21 +70,36 @@ function daysPosition(day, offset) {
  */
 
  function golfScore(score, par) {
-
+    switch (score - par){
+        case -3:
+        case 1:
+            return 'Ace'
+        case -2:
+            return 'Eagle';
+        case -1:
+            return 'Birdie';
+        case 0:
+            return 'Par';
+        case 1:
+            return 'Bogie';
+        case 2:
+            return 'Double Bogie';
+        default:
+            return 'Ouch';
+    }
  }
- 
 
 // --------------------------------------------
 
 
-// 3. Counting Cards. In the casino game Blackjack, a player can gain an advantage over the house by keeping track of the relative number of high and low cards remaining in the deck. This is called card counting.  
+// 3. Counting Cards. In the casino game Blackjack, a player can gain an advantage over the house by keeping track of the relative number of high and low cards remaining in the deck. This is called card counting.
 // Having more high cards remaining in the deck favors the player. Each card is assigned a value according to the table below. When the count is positive, the player should bet high. When the count is zero or negative, the player should bet low.
 /**
  *      Value   |   Cards
  *   --------------------------------
  *       +1     |   '2', '3', '4', '5', '6'
- *        0     |	'7', '8', '9' 
- *       -1	    |   '10', 'J', 'Q', 'K','A' 
+ *        0     |	'7', '8', '9'
+ *       -1	    |   '10', 'J', 'Q', 'K','A'
  */
 // Write a card counting function that will receive a card. The function will increment or decrement the global count variable according to the card's value (see table above). The function will then return the current count and the string "Bet" if the count is positive, or "Hold" if the count is zero or negative.
 // Example:
