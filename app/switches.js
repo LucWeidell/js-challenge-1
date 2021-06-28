@@ -1,4 +1,6 @@
-// 1. Given a string with the value of a day of the week, return the number that that day is in the week. A second argument will be provided to determine if should start week on Monday if true, else Sunday if false. If the string is not a day of the week but is bad input, then return the string 'That's not a day of the week'.
+// 1. Given a string with the value of a day of the week, return the number that that day is in the week.
+//A second argument will be provided to determine if should start week on Monday if true, else Sunday if false.
+//If the string is not a day of the week but is bad input, then return the string 'That's not a day of the week'.
 // Example:
     // input: 'Sunday', false
     // output: 1
@@ -44,12 +46,14 @@ function daysPosition(day, offset) {
             }
             return 6;
             break;
-        default:
+        case 'saturday':
             if(offset){
                 return 6;
             }
             return 7;
             break;
+        default:
+            return 'That\'s not a day of the week';
     }
 }
 
@@ -107,8 +111,23 @@ function daysPosition(day, offset) {
 // Example:
     // output: '2 Bet'
 
-let count = 0
+var count = 0
 
 function cardCounter(card) {
-
+    switch (card){
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+            count++;
+            break;
+        case '7':
+        case '8':
+        case '9':
+            break;
+        default:
+            count--;
+    }
+    return count + ((count > 0) ? ' Bet' : ' Hold');
 }
